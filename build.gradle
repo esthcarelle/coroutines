@@ -65,7 +65,7 @@ buildscript {
                 "com.google.code.gson:gson:$gson_version",
                 "com.squareup.retrofit2:converter-gson:$retrofit_gson_version",
                 "com.squareup.retrofit2:retrofit:$retrofit_version",
-                "androidx.lifecycle:lifecycle-viewmodel-ktx:x.x.x"
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutines_version"
         ]
 
         librariesKapt = [
