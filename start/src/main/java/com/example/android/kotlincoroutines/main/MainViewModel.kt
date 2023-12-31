@@ -110,7 +110,9 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
             tapCount++
             // suspend this coroutine for one second
             delay(1_000)
-
+            // resume in the main dispatcher
+            // _snackbar.value can be called directly from main thread
+            _taps.postValue("$tapCount taps")
 
         }
     }
