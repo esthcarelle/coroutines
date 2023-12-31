@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.kotlincoroutines.util.BACKGROUND
 import com.example.android.kotlincoroutines.util.singleArgViewModelFactory
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -107,6 +108,9 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
         // launch a coroutine in viewModelScope
         viewModelScope.launch {
             tapCount++
+            // suspend this coroutine for one second
+            delay(1_000)
+
 
         }
     }
