@@ -43,6 +43,6 @@ class MainViewModelTest {
 
     @Test
     fun whenMainClicked_updatesTaps() {
-        // TODO: Write this
+        subject.onMainViewClicked()
     }
 }
