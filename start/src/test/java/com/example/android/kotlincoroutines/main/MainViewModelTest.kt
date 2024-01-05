@@ -22,6 +22,7 @@ import com.example.android.kotlincoroutines.fakes.TitleDaoFake
 import com.example.android.kotlincoroutines.main.utils.MainCoroutineScopeRule
 import com.example.android.kotlincoroutines.main.utils.getValueForTest
 import com.google.common.truth.Truth
+import kotlinx.coroutines.test.advanceTimeBy
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -47,5 +48,6 @@ class MainViewModelTest {
     fun whenMainClicked_updatesTaps() {
         subject.onMainViewClicked()
         Truth.assertThat(subject.taps.getValueForTest()).isEqualTo("0 taps")
+        coroutineScope.advanceTimeBy(1000)
     }
 }
