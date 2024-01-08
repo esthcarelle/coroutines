@@ -129,8 +129,10 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
     fun refreshTitle() {
         // TODO: Convert refreshTitle to use coroutines
         viewModelScope.launch {
-
-        }
+            try {
+                _spinner.value = true
+            }
+            }
 
         }
 }
