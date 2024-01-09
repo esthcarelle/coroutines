@@ -128,13 +128,16 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
      */
     fun refreshTitle() {
         // TODO: Convert refreshTitle to use coroutines
-        viewModelScope.launch {
-            try {
-                _spinner.value = true
-            } catch (error: TitleRefreshError) {
-                _snackBar.value = error.message
-            } finally {
-                _spinner.value = false
+        BACKGROUND.submit {
+
+            viewModelScope.launch {
+                try {
+                    _spinner.value = true
+                } catch (error: TitleRefreshError) {
+                    _snackBar.value = error.message
+                } finally {
+                    _spinner.value = false
+                }
             }
         }
     }
