@@ -73,7 +73,10 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
             }
         }
     }
-}
+
+    suspend fun refreshTitle() {
+
+    }
 
 /**
  * Thrown when there was a error fetching a new title
