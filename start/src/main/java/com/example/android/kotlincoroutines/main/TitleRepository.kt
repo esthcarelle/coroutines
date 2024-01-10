@@ -88,6 +88,10 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
                 // If the network throws an exception, inform the caller
                 throw TitleRefreshError("Unable to refresh title", cause)
             }
+            if (result.isSuccessful) {
+                // Save it to database
+                titleDao.insertTitle(Title(result.body()!!))
+            }
         }
     }
 }
