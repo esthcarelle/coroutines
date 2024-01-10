@@ -79,7 +79,10 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
     suspend fun refreshTitle() {
         // interact with *blocking* network and IO calls from a coroutine
         withContext(Dispatchers.IO) {
-
+            val result = try {
+                // Make network request using a blocking call
+                network.fetchNextTitle().execute()
+            }
         }
     }
 
