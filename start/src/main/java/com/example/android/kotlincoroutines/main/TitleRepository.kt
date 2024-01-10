@@ -66,12 +66,14 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
                 } else {
                     // If it's not successful, inform the callback of the error
                     titleRefreshCallback.onError(
-                            TitleRefreshError("Unable to refresh title", null))
+                        TitleRefreshError("Unable to refresh title", null)
+                    )
                 }
             } catch (cause: Throwable) {
                 // If anything throws an exception, inform the caller
                 titleRefreshCallback.onError(
-                        TitleRefreshError("Unable to refresh title", cause))
+                    TitleRefreshError("Unable to refresh title", cause)
+                )
             }
         }
     }
@@ -82,22 +84,22 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
             val result = try {
                 // Make network request using a blocking call
                 network.fetchNextTitle().execute()
-            }catch (cause: Throwable) {
+            } catch (cause: Throwable) {
                 // If the network throws an exception, inform the caller
                 throw TitleRefreshError("Unable to refresh title", cause)
             }
         }
     }
 
-/**
- * Thrown when there was a error fetching a new title
- *
- * @property message user ready error message
- * @property cause the original cause of this exception
- */
-class TitleRefreshError(message: String, cause: Throwable?) : Throwable(message, cause)
+    /**
+     * Thrown when there was a error fetching a new title
+     *
+     * @property message user ready error message
+     * @property cause the original cause of this exception
+     */
+    class TitleRefreshError(message: String, cause: Throwable?) : Throwable(message, cause)
 
-interface TitleRefreshCallback {
-    fun onCompleted()
-    fun onError(cause: Throwable)
-}
+    interface TitleRefreshCallback {
+        fun onCompleted()
+        fun onError(cause: Throwable)
+    }
