@@ -82,6 +82,9 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
             val result = try {
                 // Make network request using a blocking call
                 network.fetchNextTitle().execute()
+            }catch (cause: Throwable) {
+                // If the network throws an exception, inform the caller
+                throw TitleRefreshError("Unable to refresh title", cause)
             }
         }
     }
