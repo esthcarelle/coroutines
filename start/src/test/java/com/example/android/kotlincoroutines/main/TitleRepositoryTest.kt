@@ -27,7 +27,10 @@ class TitleRepositoryTest {
 
     @Test
     fun whenRefreshTitleSuccess_insertsRows() {
-
+        val subject = TitleRepository(
+            MainNetworkFake("OK"),
+            TitleDaoFake("title")
+        )
     }
 
     @Test(expected = TitleRefreshError::class)
