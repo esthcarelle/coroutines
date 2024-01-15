@@ -19,6 +19,8 @@ package com.example.android.kotlincoroutines.main
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.android.kotlincoroutines.fakes.MainNetworkFake
 import com.example.android.kotlincoroutines.fakes.TitleDaoFake
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,6 +35,11 @@ class TitleRepositoryTest {
             MainNetworkFake("OK"),
             TitleDaoFake("title")
         )
+        // launch starts a coroutine then immediately returns
+        GlobalScope.launch {
+            // since this is asynchronous code, this may be called *after* the test completes
+            subject.refreshTitle()
+        }
     }
 
     @Test(expected = TitleRefreshError::class)
