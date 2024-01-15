@@ -17,6 +17,8 @@
 package com.example.android.kotlincoroutines.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.android.kotlincoroutines.fakes.MainNetworkFake
+import com.example.android.kotlincoroutines.fakes.TitleDaoFake
 import org.junit.Rule
 import org.junit.Test
 
