@@ -27,7 +27,7 @@ class TitleRepositoryTest {
 
     @Test
     fun whenRefreshTitleSuccess_insertsRows() {
-        // TODO: Write this test
+
     }
 
     @Test(expected = TitleRefreshError::class)
