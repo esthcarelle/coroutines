@@ -45,11 +45,16 @@ class TitleRepositoryTest {
     }
 
     @Test(expected = TitleRefreshError::class)
-    fun whenRefreshTitleTimeout_throws() {
+    fun whenRefreshTitleTimeout_throws() = runBlockingTest {
         val network = MainNetworkCompletableFake()
         val subject = TitleRepository(
             network,
             TitleDaoFake("title")
         )
+
+        launch {
+            subject.refreshTitle()
+        }
+
     }
 }
