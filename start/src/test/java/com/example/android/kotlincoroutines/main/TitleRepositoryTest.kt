@@ -47,6 +47,9 @@ class TitleRepositoryTest {
     @Test(expected = TitleRefreshError::class)
     fun whenRefreshTitleTimeout_throws() {
         val network = MainNetworkCompletableFake()
-
+        val subject = TitleRepository(
+            network,
+            TitleDaoFake("title")
+        )
     }
 }
