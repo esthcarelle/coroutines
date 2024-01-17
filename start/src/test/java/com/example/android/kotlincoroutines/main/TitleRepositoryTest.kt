@@ -45,7 +45,6 @@ class TitleRepositoryTest {
 
     @Test(expected = TitleRefreshError::class)
     fun whenRefreshTitleTimeout_throws() {
-        // TODO: Write this test
-        throw TitleRefreshError("Remove this – made test pass in starter code", null)
-    }
+
+        }
 }
