@@ -23,6 +23,7 @@ import com.example.android.kotlincoroutines.fakes.TitleDaoFake
 import com.google.common.truth.Truth
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
@@ -55,6 +56,6 @@ class TitleRepositoryTest {
         launch {
             subject.refreshTitle()
         }
-
+        advanceTimeBy(5_000)
     }
 }
