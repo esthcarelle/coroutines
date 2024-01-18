@@ -144,7 +144,14 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
     }
     private fun launchDataLoad(block: suspend () -> Unit): Job {
         return viewModelScope.launch {
-
+            try {
+                _spinner.value = true
+                block()
+            } catch (error: TitleRefreshError) {
+                _snackBar.value = error.message
+            } finally {
+                _spinner.value = false
+            }
         }
         }
 }
