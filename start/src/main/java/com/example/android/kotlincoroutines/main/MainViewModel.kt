@@ -141,4 +141,7 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
             }
         }
     }
+    private fun launchDataLoad(block: suspend () -> Unit): Job {
+
+    }
 }
