@@ -146,6 +146,5 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
         return viewModelScope.launch {
 
         }
-
         }
 }
