@@ -128,18 +128,8 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
      * Refresh the title, showing a loading spinner while it refreshes and errors via snackbar.
      */
     fun refreshTitle() {
-        // TODO: Convert refreshTitle to use coroutines
-        BACKGROUND.submit {
-
-            viewModelScope.launch {
-                try {
-                    _spinner.value = true
-                } catch (error: TitleRefreshError) {
-                    _snackBar.value = error.message
-                } finally {
-                    _spinner.value = false
-                }
-            }
+        launchDataLoad {
+            repository.refreshTitle()
         }
     }
 
